@@ -51,6 +51,37 @@ serve(async (req) => {
       throw error
     }
 
+    // Notifica Telegram em background (não bloqueia a resposta ao cliente).
+    // Falhas aqui NÃO devem impedir o insert, que já foi commitado.
+    if (data && data.length > 0) {
+      try {
+        const inserted = data[0]
+        const notifyUrl = `${supabaseUrl}/functions/v1/notify-telegram`
+        fetch(notifyUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${supabaseServiceKey}`,
+          },
+          body: JSON.stringify({
+            title: 'Novo agendamento',
+            body: `${formData.nome} solicitou reunião`,
+            fields: {
+              Nome: formData.nome,
+              Email: formData.email,
+              Telefone: formData.telefone || '—',
+              Servico: formData.servico || '—',
+              Data: formData.data || '—',
+              Horario: formData.horario || '—',
+              Mensagem: (formData.mensagem || '—').slice(0, 200),
+            },
+          }),
+        }).catch((e) => console.error('notify-telegram failed:', e))
+      } catch (e) {
+        console.error('notify dispatch error:', e)
+      }
+    }
+
     return new Response(JSON.stringify({ success: true, data }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' }
     })

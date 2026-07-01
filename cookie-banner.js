@@ -35,19 +35,22 @@
         color: #d0d0d0;
         display: flex; flex-direction: column; gap: 0.75rem;
       }
-      #cookie-banner p { margin: 0; font-size: 0.85rem; line-height: 1.5; }
+      #cookie-banner p { margin: 0; font-size: 0.78rem; line-height: 1.4; }
       #cookie-banner a { color: #00ff41; border-bottom: 1px dashed #00ff41; }
       #cookie-banner a:hover { background: rgba(0, 255, 65, 0.1); }
       #cookie-banner .cookie-actions {
-        display: flex; gap: 0.5rem; flex-wrap: wrap;
+        display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center;
+      }
+      #cookie-banner .cookie-link {
+        font-size: 0.7rem; color: #888; margin-left: auto;
       }
       #cookie-banner button {
         background: transparent;
         color: #00ff41;
         border: 1px solid #00ff41;
-        padding: 0.5rem 1rem;
+        padding: 0.35rem 0.7rem;
         font-family: inherit;
-        font-size: 0.85rem;
+        font-size: 0.72rem;
         cursor: pointer;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -119,7 +122,7 @@
     <div class="cookie-actions">
       <button type="button" data-action="accept">[ ACEITAR ]</button>
       <button type="button" class="reject" data-action="reject">[ RECUSAR ]</button>
-      <a href="cookies.html" style="margin-left:auto;align-self:center;font-size:0.8rem;">Saiba mais</a>
+      <a href="cookies.html" class="cookie-link">Saiba mais</a>
     </div>
   `;
 
