@@ -248,7 +248,7 @@ bookingForm.addEventListener('submit', async (e) => {
         if (res.ok) {
             bookingFeedback.textContent = '[OK] Consultoria agendada com sucesso! Entrarei em contato em breve.';
             bookingFeedback.className = 'booking-feedback success';
-            bookingForm.reset();
+            bookingForm.reset(); setTimeout(() => { window.location.href = 'obrigado.html'; }, 1500);
         } else {
             bookingFeedback.textContent = `[ERRO] ${data.error || 'Erro ao agendar.'}`;
             bookingFeedback.className = 'booking-feedback error';

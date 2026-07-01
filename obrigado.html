@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! | Paulo - Automações, Dev Web & IA</title>
+    <meta name="description" content="Sua consultoria foi agendada com sucesso! Em breve entraremos em contato.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html#sobre" class="nav-link">./sobre</a></li>
+                <li><a href="index.html#servicos" class="nav-link">./servicos</a></li>
+                <li><a href="index.html#projetos" class="nav-link">./projetos</a></li>
+                <li><a href="index.html#chat-ia" class="nav-link">./ia</a></li>
+                <li><a href="index.html#agendar" class="nav-link nav-cta">&gt; agendar_</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Thank You Section -->
+    <section class="hero" style="min-height: 100vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="hero-content" style="text-align: center;">
+                <div class="terminal-line" style="justify-content: center;">
+                    <span class="prompt">paulo@portfolio:~$</span>
+                    <span class="hero-badge" style="background: #00ff41; color: #0a0a0a;">agendamento --confirmado</span>
+                </div>
+
+                <div class="terminal-box" style="max-width: 700px; margin: 2rem auto;">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">confirmacao.txt</span>
+                    </div>
+                    <div class="terminal-body" style="padding: 3rem 2rem;">
+                        <h1 style="color: #00ff41; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 700;">
+                            [✓] Consultoria Agendada!
+                        </h1>
+                        <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #b0b0b0;">
+                            <span class="code-comment">// Sua solicitação foi recebida com sucesso</span><br><br>
+                            Obrigado pelo interesse! Recebi seu agendamento e <strong style="color: #00ff41;">entrarei em contato em breve</strong> para confirmarmos os detalhes da consultoria gratuita.
+                        </p>
+
+                        <div class="about-highlights" style="margin: 2rem 0; text-align: left;">
+                            <div class="highlight"><span class="check">[✓]</span> Dados recebidos</div>
+                            <div class="highlight"><span class="check">[✓]</span> Em análise</div>
+                            <div class="highlight"><span class="check">[⏳]</span> Retorno em até 24h</div>
+                        </div>
+
+                        <p style="color: #888; font-size: 0.95rem; margin-top: 2rem;">
+                            <span class="code-comment">// Enquanto isso, confira meus projetos</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="hero-actions" style="margin-top: 2rem;">
+                    <a href="index.html#projetos" class="btn btn-primary">
+                        <span class="btn-bracket">[</span> Ver Projetos <span class="btn-bracket">]</span>
+                    </a>
+                    <a href="index.html" class="btn btn-outline">
+                        <span class="btn-bracket">[</span> Voltar ao Início <span class="btn-bracket">]</span>
+                    </a>
+                </div>
+
+                <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(0, 255, 65, 0.05); border: 1px solid rgba(0, 255, 65, 0.2); border-radius: 8px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    <p style="color: #00ff41; font-weight: 600; margin-bottom: 0.5rem;">Dúvidas urgentes?</p>
+                    <p style="color: #b0b0b0; margin-bottom: 1rem;">Entre em contato direto pelo WhatsApp</p>
+                    <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Acabei%20de%20agendar%20uma%20consultoria." class="btn btn-whatsapp" target="_blank" rel="noopener">
+                        📱 WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+                    <p>// Automações, Desenvolvimento Web, Infraestrutura & IA</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://instagram.com/paulo.hg1" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">[ Instagram ]</a>
+                    <a href="https://github.com/haaspaulo4" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub">[ GitHub ]</a>
+                    <a href="https://wa.me/5544998463463" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp">[ WhatsApp ]</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paulo. Todos os direitos reservados. <span class="blink">_</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Acabei%20de%20agendar%20uma%20consultoria." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        📱
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

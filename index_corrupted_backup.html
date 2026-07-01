@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paulo | Automações, Dev Web & IA</title>
+    <meta name="description" content="Portfólio de Paulo — Especialista em Automações, Desenvolvimento Web, Infraestrutura e Inteligência Artificial. Agende sua consultoria gratuita.">
+    <link rel="stylesheet" <a href="style.css">
+    <link rel="preconnect" <a href="https://fonts.googleapis.com">
+    <link rel="preconnect" <a href="https://fonts.gstatic.com" crossorigin>
+    <link <a href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a <a href="#" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a <a href="#sobre" class="nav-link">./sobre</a></li>
+                <li><a <a href="#servicos" class="nav-link">./servicos</a></li>
+                <li><a <a href="#projetos" class="nav-link">./projetos</a></li>
+                <li><a <a href="#chat-ia" class="nav-link">./ia</a></li>
+                <li><a <a href="#agendar" class="nav-link nav-cta">> agendar_</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="terminal-line">
+                    <span class="prompt">paulo@portfolio:~$</span>
+                    <span class="hero-badge">status --disponivel</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor">_</span>
+                </h1>
+                <div class="terminal-output">
+                    <p <p class="hero-subtitle">
+                        <span class="prompt-mini">&gt;</span> Automações inteligentes, desenvolvimento web e IA para
+                        acelerar seu negócio. Formado em Gestão Comercial com
+                        visão estratégica de mercado.
+                    </p>
+                </div>
+                <div class="hero-actions">
+                    <a <a href="#agendar" class="btn btn-primary">
+                        <span class="btn-bracket">[</span> Consultoria Gratuita <span class="btn-bracket">]</span>
+                    </a>
+                    <a <a href="#projetos" class="btn btn-outline">
+                        <span class="btn-bracket">[</span> Ver Projetos <span class="btn-bracket">]</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-target="4">0</span>
+                        <span class="stat-label">areas_atuacao</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-symbol">%</span>
+                        <span class="stat-label">comprometimento</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="24">0</span><span class="stat-symbol">h</span>
+                        <span class="stat-label">resposta_rapida</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">cat sobre.txt</span>
+            </div>
+            <div class="about-grid">
+                <div class="about-text terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">sobre_mim.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p>
+                            <span <p class="code-comment">// Quem sou eu</span><br>
+                            Sou o <strong>Paulo</strong>, formado em <strong>Gestão Comercial</strong>
+                            e apaixonado por tecnologia. Uni minha visão estratégica de negócios com
+                            habilidades técnicas em desenvolvimento, automação e inteligência artificial.
+                        </p>
+                        <p>
+                            <span <p class="code-comment">// Meu objetivo</span><br>
+                            Ajudar empresas e profissionais a <strong>otimizar processos</strong>,
+                            criar <strong>presença digital profissional</strong> e implementar
+                            <strong>soluções inteligentes</strong> que geram resultados reais.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight"><span class="check">[✓]</span> Gestão Comercial + Tech</div>
+                            <div class="highlight"><span class="check">[✓]</span> Visão estratégica de mercado</div>
+                            <div class="highlight"><span class="check">[✓]</span> Foco em resultados mensuráveis</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-tech terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">stack.json</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p <p class="code-comment">// Tecnologias & Ferramentas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Groq/LLMs</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="section" id="servicos">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">ls ./servicos/</span>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-aos>
+                    <div class="service-icon">&lt;/&gt;</div>
+                    <h3>Automações</h3>
+                    <p>Automatizo tarefas repetitivas com bots, RPA e workflows inteligentes. Mais eficiência, menos trabalho manual.</p>
+                    <ul class="service-features">
+                        <li><span class="arrow">→</span> Web Scraping & RPA</li>
+                        <li><span class="arrow">→</span> Automação de processos</li>
+                        <li><span class="arrow">→</span> Integração de sistemas</li>
+                        <li><span class="arrow">→</span> Bots personalizados</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos>
+                    <div class="service-icon">⬡</div>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites modernos, sistemas web e aplicações sob medida. Do landing page ao sistema completo.</p>
+                    <ul class="service-features">
+                        <li><span class="arrow">→</span> Sites & Landing Pages</li>
+                        <li><span class="arrow">→</span> Sistemas Web (SaaS)</li>
+                        <li><span class="arrow">→</span> APIs & Back-end</li>
+                        <li><span class="arrow">→</span> E-commerce</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos>
+                    <div class="service-icon">▣</div>
+                    <h3>Infraestrutura Web</h3>
+                    <p>Deploy, servidores, DevOps e cloud. Sua aplicação no ar com performance e segurança.</p>
+                    <ul class="service-features">
+                        <li><span class="arrow">→</span> Deploy & CI/CD</li>
+                        <li><span class="arrow">→</span> Servidores & Cloud</li>
+                        <li><span class="arrow">→</span> Docker & Containers</li>
+                        <li><span class="arrow">→</span> Monitoramento</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos>
+                    <div class="service-icon">◈</div>
+                    <h3>Inteligência Artificial</h3>
+                    <p>Chatbots inteligentes, integração com IA e soluções que aprendem com seus dados.</p>
+                    <ul class="service-features">
+                        <li><span class="arrow">→</span> Chatbots com IA</li>
+                        <li><span class="arrow">→</span> Integração Groq/LLMs</li>
+                        <li><span class="arrow">→</span> Análise de dados</li>
+                        <li><span class="arrow">→</span> Assistentes virtuais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section class="section" id="projetos">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">git log --projetos</span>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos>
+                    <div class="project-image">
+                        <div class="project-placeholder">◈</div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="project-tag">ia</span>
+                            <span class="project-tag">automação</span>
+                            <span class="project-tag">youtube</span>
+                        </div>
+                        <h3>Fábrica de Shorts</h3>
+                        <p>Sistema automático de geração e publicação de clips/vídeos curtos usando IA. Produção contínua de conteúdo para YouTube Shorts.</p>
+                        <a <a <a href="https://www.youtube.com/@cortesai-b8y" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> youtube.com/@cortesai-b8y
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card" data-aos>
+                    <div class="project-image">
+                        <div class="project-placeholder">⬡</div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="project-tag">web</span>
+                            <span class="project-tag">seo</span>
+                            <span class="project-tag">local</span>
+                        </div>
+                        <h3>Guia Comercial Assis Chateaubriand</h3>
+                        <p>Portal completo de empresas e serviços locais com listagens, busca e otimização para SEO local.</p>
+                        <a <a <a href="https://assischateaubriand.online" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> assischateaubriand.online
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card" data-aos>
+                    <div class="project-image">
+                        <div class="project-placeholder">&lt;/&gt;</div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span class="project-tag">portfolio</span>
+                            <span class="project-tag">ia</span>
+                            <span class="project-tag">groq</span>
+                        </div>
+                        <h3>Portfólio Interativo</h3>
+                        <p>Este portfólio com design terminal/hacker, chatbot IA integrado (Groq) e sistema de agendamento via Supabase.</p>
+                        <a <a <a href="https://github.com/haaspaulo4/portifolio" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> github.com/haaspaulo4/portifolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="chat-ia">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">./assistente-ia --start</span>
+            </div>
+            <div class="chat-container terminal-box">
+                <div class="terminal-bar">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">assistente-ia.sh — Groq LLM</span>
+                </div>
+                <div class="chat-intro">
+                    <p><span <p class="code-comment">// Converse com minha IA. Ela sabe tudo sobre meus serviços</span></p>
+                    <p><span <p class="code-comment">// e pode te ajudar a agendar uma consultoria gratuita.</span></p>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-msg bot">
+                        <span class="msg-label">[IA]</span>
+                        <span class="msg-text">Olá! Sou o assistente IA do Paulo. Como posso ajudar você hoje? Posso falar sobre automações, desenvolvimento web, infraestrutura ou inteligência artificial.</span>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <span class="prompt-mini">&gt;</span>
+                    <input type="text" id="chat-input" class="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                    <button id="chat-send" class="chat-send">[ENVIAR]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendar Consultoria -->
+    <section class="section" id="agendar">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">./agendar-consultoria --gratuita</span>
+            </div>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <div class="terminal-box">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">info.txt</span>
+                        </div>
+                        <div class="terminal-body">
+                            <h3>Consultoria Gratuita</h3>
+                            <p>Quer automatizar processos, criar um site profissional ou integrar IA no seu negócio?</p>
+                            <div class="booking-features">
+                                <div class="booking-feature"><span class="check">[✓]</span> 30 minutos</div>
+                                <div class="booking-feature"><span class="check">[✓]</span> 100% Gratuita</div>
+                                <div class="booking-feature"><span class="check">[✓]</span> Sem compromisso</div>
+                            </div>
+                            <div class="booking-alt">
+                                <p <p class="code-comment">// Prefere WhatsApp?</p>
+                                <a <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20agendar%20uma%20consultoria%20gratuita." class="btn btn-whatsapp" target="_blank" rel="noopener">
+                                    [ WhatsApp ]
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-form-wrap terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">agendar.sh</span>
+                    </div>
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-group">
+                            <label for="book-name">nome:</label>
+                            <input type="text" id="book-name" name="nome" required placeholder="Seu nome completo">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="book-email">email:</label>
+                                <input type="email" id="book-email" name="email" required placeholder="seu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="book-phone">telefone:</label>
+                                <input type="tel" id="book-phone" name="telefone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-service">servico:</label>
+                            <select id="book-service" name="servico" required>
+                                <option value="">-- selecione --</option>
+                                <option value="automacoes">Automações</option>
+                                <option value="dev-web">Desenvolvimento Web</option>
+                                <option value="infra">Infraestrutura Web</option>
+                                <option value="ia">Inteligência Artificial</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="book-date">data:</label>
+                                <input type="date" id="book-date" name="data" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-time">horario:</label>
+                                <select id="book-time" name="horario" required>
+                                    <option value="">-- selecione --</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-msg">mensagem:</label>
+                            <textarea id="book-msg" name="mensagem" rows="3" placeholder="Conte brevemente o que precisa..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="booking-submit">
+                            <span class="btn-bracket">[</span> AGENDAR CONSULTORIA <span class="btn-bracket">]</span>
+                        </button>
+                        <div id="booking-feedback" class="booking-feedback"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a <a href="#" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+                    <p>// Automações, Desenvolvimento Web, Infraestrutura & IA</p>
+                </div>
+                <div class="footer-links">
+                    <a <a href="https://instagram.com/paulo.hg1" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">[ Instagram ]</a>
+        <a <a href="https://github.com/haaspaulo4" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub">[ GitHub ]</a>
+                    <a <a href="https://wa.me/5544998463463" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp">[ WhatsApp ]</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Paulo. Todos os direitos reservados. <span class="blink">_</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+        WA
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
