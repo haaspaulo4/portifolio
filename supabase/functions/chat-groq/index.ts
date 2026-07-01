@@ -12,9 +12,10 @@ serve(async (req) => {
   }
 
   try {
-    const message = await req.json()
+    const payload = await req.json()
+    const userMessage = payload.message || payload
     const apiKey = Deno.env.get('GROQ_API_KEY')
-    const modelName = Deno.env.get('GROQ_MODEL') || 'llama3-8b-8192'
+    const modelName = Deno.env.get('GROQ_MODEL') || 'llama-3.3-70b-versatile'
 
     if (!apiKey) {
       throw new Error('GROQ_API_KEY environment variable is not configured.')
@@ -44,7 +45,7 @@ Fale em português do Brasil (casual/profissional). Seja conciso nas respostas, 
           },
           {
             role: 'user',
-            content: message
+            content: userMessage
           }
         ],
         temperature: 0.7,
