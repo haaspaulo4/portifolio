@@ -918,10 +918,10 @@ ul { list-style: none; }
 }
 
 .footer-social {
-    padding: 8px 14px;
+    padding: 6px 10px;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: var(--text-dim);
     transition: var(--transition);
@@ -1109,7 +1109,7 @@ ul { list-style: none; }
 
     .footer-links {
         flex-direction: column;
-        gap: 12px;
+        gap: 8px;
     }
 
     .stat-number {
