@@ -8,61 +8,72 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrix-rain"></canvas>
+    <!-- Scanlines Overlay -->
+    <div class="scanlines"></div>
+
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">&lt;Paulo /&gt;</a>
+            <a href="#" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                <li><a href="#projetos" class="nav-link">Projetos</a></li>
-                <li><a href="#agendar" class="nav-link nav-cta">Agendar Consultoria</a></li>
+                <li><a href="#sobre" class="nav-link">./sobre</a></li>
+                <li><a href="#servicos" class="nav-link">./servicos</a></li>
+                <li><a href="#projetos" class="nav-link">./projetos</a></li>
+                <li><a href="#chat-ia" class="nav-link">./ia</a></li>
+                <li><a href="#agendar" class="nav-link nav-cta">> agendar_</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="hero">
-        <div class="hero-bg-grid"></div>
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">Disponível para projetos</span>
+                <div class="terminal-line">
+                    <span class="prompt">paulo@portfolio:~$</span>
+                    <span class="hero-badge">status --disponivel</span>
+                </div>
                 <h1 class="hero-title">
-                    Transformo ideias em
-                    <span class="gradient-text">soluções digitais</span>
+                    <span class="typewriter" id="typewriter"></span>
+                    <span class="cursor">_</span>
                 </h1>
-                <p class="hero-subtitle">
-                    Automações inteligentes, desenvolvimento web e IA para
-                    acelerar seu negócio. Formado em Gestão Comercial com
-                    visão estratégica de mercado.
-                </p>
+                <div class="terminal-output">
+                    <p class="hero-subtitle">
+                        <span class="prompt-mini">&gt;</span> Automações inteligentes, desenvolvimento web e IA para
+                        acelerar seu negócio. Formado em Gestão Comercial com
+                        visão estratégica de mercado.
+                    </p>
+                </div>
                 <div class="hero-actions">
                     <a href="#agendar" class="btn btn-primary">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        Consultoria Gratuita
+                        <span class="btn-bracket">[</span> Consultoria Gratuita <span class="btn-bracket">]</span>
                     </a>
-                    <a href="#projetos" class="btn btn-outline">Ver Projetos</a>
+                    <a href="#projetos" class="btn btn-outline">
+                        <span class="btn-bracket">[</span> Ver Projetos <span class="btn-bracket">]</span>
+                    </a>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
                         <span class="stat-number" data-target="4">0</span>
-                        <span class="stat-label">Áreas de atuação</span>
+                        <span class="stat-label">areas_atuacao</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number" data-target="100">0</span><span class="stat-symbol">%</span>
-                        <span class="stat-label">Comprometimento</span>
+                        <span class="stat-label">comprometimento</span>
                     </div>
                     <div class="stat">
                         <span class="stat-number" data-target="24">0</span><span class="stat-symbol">h</span>
-                        <span class="stat-label">Resposta rápida</span>
+                        <span class="stat-label">resposta_rapida</span>
                     </div>
                 </div>
             </div>
@@ -73,51 +84,61 @@
     <section class="section" id="sobre">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Quem sou eu</span>
-                <h2 class="section-title">Sobre mim</h2>
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">cat sobre.txt</span>
             </div>
             <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        Sou o <strong>Paulo</strong>, formado em <strong>Gestão Comercial</strong>
-                        e apaixonado por tecnologia. Uni minha visão estratégica de negócios com
-                        habilidades técnicas em desenvolvimento, automação e inteligência artificial.
-                    </p>
-                    <p>
-                        Meu objetivo é ajudar empresas e profissionais a <strong>otimizar processos</strong>,
-                        criar <strong>presença digital profissional</strong> e implementar
-                        <strong>soluções inteligentes</strong> que geram resultados reais.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Gestão Comercial + Tech</span>
-                        </div>
-                        <div class="highlight">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Visão estratégica de mercado</span>
-                        </div>
-                        <div class="highlight">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Foco em resultados mensuráveis</span>
+                <div class="about-text terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">sobre_mim.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p>
+                            <span class="code-comment">// Quem sou eu</span><br>
+                            Sou o <strong>Paulo</strong>, formado em <strong>Gestão Comercial</strong>
+                            e apaixonado por tecnologia. Uni minha visão estratégica de negócios com
+                            habilidades técnicas em desenvolvimento, automação e inteligência artificial.
+                        </p>
+                        <p>
+                            <span class="code-comment">// Meu objetivo</span><br>
+                            Ajudar empresas e profissionais a <strong>otimizar processos</strong>,
+                            criar <strong>presença digital profissional</strong> e implementar
+                            <strong>soluções inteligentes</strong> que geram resultados reais.
+                        </p>
+                        <div class="about-highlights">
+                            <div class="highlight"><span class="check">[✓]</span> Gestão Comercial + Tech</div>
+                            <div class="highlight"><span class="check">[✓]</span> Visão estratégica de mercado</div>
+                            <div class="highlight"><span class="check">[✓]</span> Foco em resultados mensuráveis</div>
                         </div>
                     </div>
                 </div>
-                <div class="about-tech">
-                    <h3>Tecnologias & Ferramentas</h3>
-                    <div class="tech-tags">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">Node.js</span>
-                        <span class="tech-tag">Docker</span>
-                        <span class="tech-tag">Linux</span>
-                        <span class="tech-tag">AWS</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">Selenium</span>
-                        <span class="tech-tag">Git</span>
-                        <span class="tech-tag">SQL</span>
+                <div class="about-tech terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">stack.json</span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="code-comment">// Tecnologias & Ferramentas</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML/CSS</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Linux</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Groq/LLMs</span>
+                            <span class="tech-tag">Selenium</span>
+                            <span class="tech-tag">Git</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,63 +146,55 @@
     </section>
 
     <!-- Serviços -->
-    <section class="section section-alt" id="servicos">
+    <section class="section" id="servicos">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">O que faço</span>
-                <h2 class="section-title">Serviços</h2>
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">ls ./servicos/</span>
             </div>
             <div class="services-grid">
                 <div class="service-card" data-aos>
-                    <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
+                    <div class="service-icon">&lt;/&gt;</div>
                     <h3>Automações</h3>
                     <p>Automatizo tarefas repetitivas com bots, RPA e workflows inteligentes. Mais eficiência, menos trabalho manual.</p>
                     <ul class="service-features">
-                        <li>Web Scraping & RPA</li>
-                        <li>Automação de processos</li>
-                        <li>Integração de sistemas</li>
-                        <li>Bots personalizados</li>
+                        <li><span class="arrow">→</span> Web Scraping & RPA</li>
+                        <li><span class="arrow">→</span> Automação de processos</li>
+                        <li><span class="arrow">→</span> Integração de sistemas</li>
+                        <li><span class="arrow">→</span> Bots personalizados</li>
                     </ul>
                 </div>
                 <div class="service-card" data-aos>
-                    <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                    </div>
+                    <div class="service-icon">⬡</div>
                     <h3>Desenvolvimento Web</h3>
                     <p>Sites modernos, sistemas web e aplicações sob medida. Do landing page ao sistema completo.</p>
                     <ul class="service-features">
-                        <li>Sites & Landing Pages</li>
-                        <li>Sistemas Web (SaaS)</li>
-                        <li>APIs & Back-end</li>
-                        <li>E-commerce</li>
+                        <li><span class="arrow">→</span> Sites & Landing Pages</li>
+                        <li><span class="arrow">→</span> Sistemas Web (SaaS)</li>
+                        <li><span class="arrow">→</span> APIs & Back-end</li>
+                        <li><span class="arrow">→</span> E-commerce</li>
                     </ul>
                 </div>
                 <div class="service-card" data-aos>
-                    <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                    </div>
+                    <div class="service-icon">▣</div>
                     <h3>Infraestrutura Web</h3>
                     <p>Deploy, servidores, DevOps e cloud. Sua aplicação no ar com performance e segurança.</p>
                     <ul class="service-features">
-                        <li>Deploy & CI/CD</li>
-                        <li>Servidores & Cloud</li>
-                        <li>Docker & Containers</li>
-                        <li>Monitoramento</li>
+                        <li><span class="arrow">→</span> Deploy & CI/CD</li>
+                        <li><span class="arrow">→</span> Servidores & Cloud</li>
+                        <li><span class="arrow">→</span> Docker & Containers</li>
+                        <li><span class="arrow">→</span> Monitoramento</li>
                     </ul>
                 </div>
                 <div class="service-card" data-aos>
-                    <div class="service-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M8.5 8.5L2 12l6.5 3.5"/><path d="M15.5 8.5L22 12l-6.5 3.5"/></svg>
-                    </div>
+                    <div class="service-icon">◈</div>
                     <h3>Inteligência Artificial</h3>
                     <p>Chatbots inteligentes, integração com IA e soluções que aprendem com seus dados.</p>
                     <ul class="service-features">
-                        <li>Chatbots com IA</li>
-                        <li>Integração OpenAI/LLMs</li>
-                        <li>Análise de dados</li>
-                        <li>Assistentes virtuais</li>
+                        <li><span class="arrow">→</span> Chatbots com IA</li>
+                        <li><span class="arrow">→</span> Integração Groq/LLMs</li>
+                        <li><span class="arrow">→</span> Análise de dados</li>
+                        <li><span class="arrow">→</span> Assistentes virtuais</li>
                     </ul>
                 </div>
             </div>
@@ -192,105 +205,192 @@
     <section class="section" id="projetos">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Meu trabalho</span>
-                <h2 class="section-title">Projetos</h2>
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">git log --projetos</span>
             </div>
             <div class="projects-grid">
                 <div class="project-card" data-aos>
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
+                        <div class="project-placeholder">&lt;/&gt;</div>
                     </div>
                     <div class="project-info">
                         <div class="project-tags">
-                            <span class="project-tag">Automação</span>
-                            <span class="project-tag">Python</span>
+                            <span class="project-tag">automação</span>
+                            <span class="project-tag">python</span>
                         </div>
                         <h3>Bot de Automação</h3>
                         <p>Sistema automatizado para coleta e processamento de dados web com relatórios inteligentes.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link" target="_blank" rel="noopener">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                GitHub
-                            </a>
-                        </div>
+                        <a href="#" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> github.com
+                        </a>
                     </div>
                 </div>
                 <div class="project-card" data-aos>
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
+                        <div class="project-placeholder">⬡</div>
                     </div>
                     <div class="project-info">
                         <div class="project-tags">
-                            <span class="project-tag">Web</span>
-                            <span class="project-tag">Full Stack</span>
+                            <span class="project-tag">web</span>
+                            <span class="project-tag">fullstack</span>
                         </div>
                         <h3>Sistema Web</h3>
                         <p>Aplicação web completa com autenticação, dashboard e integração com APIs externas.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link" target="_blank" rel="noopener">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                GitHub
-                            </a>
-                        </div>
+                        <a href="#" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> github.com
+                        </a>
                     </div>
                 </div>
                 <div class="project-card" data-aos>
                     <div class="project-image">
-                        <div class="project-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22l-.75-12.07A4.001 4.001 0 0 1 12 2z"/><path d="M8.5 8.5L2 12l6.5 3.5"/><path d="M15.5 8.5L22 12l-6.5 3.5"/></svg>
-                        </div>
+                        <div class="project-placeholder">◈</div>
                     </div>
                     <div class="project-info">
                         <div class="project-tags">
-                            <span class="project-tag">IA</span>
-                            <span class="project-tag">Chatbot</span>
+                            <span class="project-tag">ia</span>
+                            <span class="project-tag">chatbot</span>
                         </div>
                         <h3>Assistente IA</h3>
                         <p>Chatbot inteligente com integração LLM para atendimento automatizado e suporte ao cliente.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-link" target="_blank" rel="noopener">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                                GitHub
-                            </a>
-                        </div>
+                        <a href="#" class="project-link" target="_blank" rel="noopener">
+                            <span class="arrow">→</span> github.com
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Agendar Consultoria -->
-    <section class="section section-cta" id="agendar">
+    <!-- Chat IA -->
+    <section class="section" id="chat-ia">
         <div class="container">
-            <div class="cta-content">
-                <span class="section-tag">Vamos conversar?</span>
-                <h2 class="section-title">Consultoria Gratuita</h2>
-                <p class="cta-description">
-                    Quer automatizar processos, criar um site profissional ou integrar IA no seu negócio?
-                    Agende uma conversa gratuita e descubra como posso ajudar.
-                </p>
-                <div class="cta-features">
-                    <div class="cta-feature">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        <span>30 minutos</span>
-                    </div>
-                    <div class="cta-feature">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                        <span>100% Gratuita</span>
-                    </div>
-                    <div class="cta-feature">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                        <span>Sem compromisso</span>
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">./assistente-ia --start</span>
+            </div>
+            <div class="chat-container terminal-box">
+                <div class="terminal-bar">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">assistente-ia.sh — Groq LLM</span>
+                </div>
+                <div class="chat-intro">
+                    <p><span class="code-comment">// Converse com minha IA. Ela sabe tudo sobre meus serviços</span></p>
+                    <p><span class="code-comment">// e pode te ajudar a agendar uma consultoria gratuita.</span></p>
+                </div>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="chat-msg bot">
+                        <span class="msg-label">[IA]</span>
+                        <span class="msg-text">Olá! Sou o assistente IA do Paulo. Como posso ajudar você hoje? Posso falar sobre automações, desenvolvimento web, infraestrutura ou inteligência artificial.</span>
                     </div>
                 </div>
-                <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20agendar%20uma%20consultoria%20gratuita." class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    Agendar pelo WhatsApp
-                </a>
+                <div class="chat-input-area">
+                    <span class="prompt-mini">&gt;</span>
+                    <input type="text" id="chat-input" class="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+                    <button id="chat-send" class="chat-send">[ENVIAR]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agendar Consultoria -->
+    <section class="section" id="agendar">
+        <div class="container">
+            <div class="section-header">
+                <span class="prompt">paulo@portfolio:~$</span>
+                <span class="section-cmd">./agendar-consultoria --gratuita</span>
+            </div>
+            <div class="booking-container">
+                <div class="booking-info">
+                    <div class="terminal-box">
+                        <div class="terminal-bar">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                            <span class="terminal-title">info.txt</span>
+                        </div>
+                        <div class="terminal-body">
+                            <h3>Consultoria Gratuita</h3>
+                            <p>Quer automatizar processos, criar um site profissional ou integrar IA no seu negócio?</p>
+                            <div class="booking-features">
+                                <div class="booking-feature"><span class="check">[✓]</span> 30 minutos</div>
+                                <div class="booking-feature"><span class="check">[✓]</span> 100% Gratuita</div>
+                                <div class="booking-feature"><span class="check">[✓]</span> Sem compromisso</div>
+                            </div>
+                            <div class="booking-alt">
+                                <p class="code-comment">// Prefere WhatsApp?</p>
+                                <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20agendar%20uma%20consultoria%20gratuita." class="btn btn-whatsapp" target="_blank" rel="noopener">
+                                    [ WhatsApp ]
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="booking-form-wrap terminal-box">
+                    <div class="terminal-bar">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">agendar.sh</span>
+                    </div>
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-group">
+                            <label for="book-name">nome:</label>
+                            <input type="text" id="book-name" name="nome" required placeholder="Seu nome completo">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="book-email">email:</label>
+                                <input type="email" id="book-email" name="email" required placeholder="seu@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="book-phone">telefone:</label>
+                                <input type="tel" id="book-phone" name="telefone" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-service">servico:</label>
+                            <select id="book-service" name="servico" required>
+                                <option value="">-- selecione --</option>
+                                <option value="automacoes">Automações</option>
+                                <option value="dev-web">Desenvolvimento Web</option>
+                                <option value="infra">Infraestrutura Web</option>
+                                <option value="ia">Inteligência Artificial</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="book-date">data:</label>
+                                <input type="date" id="book-date" name="data" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-time">horario:</label>
+                                <select id="book-time" name="horario" required>
+                                    <option value="">-- selecione --</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="book-msg">mensagem:</label>
+                            <textarea id="book-msg" name="mensagem" rows="3" placeholder="Conte brevemente o que precisa..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full" id="booking-submit">
+                            <span class="btn-bracket">[</span> AGENDAR CONSULTORIA <span class="btn-bracket">]</span>
+                        </button>
+                        <div id="booking-feedback" class="booking-feedback"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -300,27 +400,24 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="#" class="nav-logo">&lt;Paulo /&gt;</a>
-                    <p>Automações, Desenvolvimento Web, Infraestrutura & IA</p>
+                    <a href="#" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+                    <p>// Automações, Desenvolvimento Web, Infraestrutura & IA</p>
                 </div>
                 <div class="footer-links">
-                    <a href="https://github.com/paulocostarj" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-                    </a>
-                    <a href="https://wa.me/5544998463463" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    </a>
+                    <a href="https://instagram.com/paulo.hg1" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram">[ Instagram ]</a>
+        <a href="https://github.com/haaspaulo4" target="_blank" rel="noopener" class="footer-social" aria-label="GitHub">[ GitHub ]</a>
+                    <a href="https://wa.me/5544998463463" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp">[ WhatsApp ]</a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Paulo. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Paulo. Todos os direitos reservados. <span class="blink">_</span></p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/5544998463463?text=Ol%C3%A1%20Paulo!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WA
     </a>
 
     <script src="script.js"></script>
