@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso | Paulo - Automações, Dev Web & IA</title>
+  <meta name="description" content="Termos de uso do site de Paulo: regras de utilização, propriedade intelectual, responsabilidades e foro.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .legal-page { max-width: 820px; margin: 0 auto; padding: 120px 24px 60px; }
+    .legal-page h1 { color: var(--green); margin-bottom: 0.5rem; font-size: 1.8rem; }
+    .legal-page .updated { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2.5rem; }
+    .legal-page h2 { color: var(--green); margin-top: 2.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; border-left: 2px solid var(--green); padding-left: 0.75rem; }
+    .legal-page p, .legal-page li { color: #c8c8c8; line-height: 1.75; margin-bottom: 0.85rem; font-size: 0.95rem; }
+    .legal-page ul { padding-left: 1.5rem; list-style: '> '; }
+    .legal-page ul li::marker { color: var(--green); }
+    .legal-page a { color: var(--green); border-bottom: 1px dashed var(--green); }
+    .legal-page a:hover { background: rgba(0, 255, 65, 0.08); }
+    .legal-page .terminal-line { color: var(--text-dim); font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <!-- Matrix Rain Canvas -->
+  <canvas id="matrix-rain"></canvas>
+  <!-- Scanlines Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html#sobre" class="nav-link">./sobre</a></li>
+        <li><a href="index.html#servicos" class="nav-link">./servicos</a></li>
+        <li><a href="index.html#projetos" class="nav-link">./projetos</a></li>
+        <li><a href="index.html#chat-ia" class="nav-link">./ia</a></li>
+        <li><a href="index.html#agendar" class="nav-link nav-cta">&gt; agendar_</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <h1>./termos-de-uso --read</h1>
+    <p class="updated">Última atualização: 01 de julho de 2026</p>
+
+    <p>Bem-vindo ao meu portfolio. Ao acessar e utilizar este site, você concorda com os termos descritos abaixo. Se discordar de qualquer ponto, por favor não utilize o site.</p>
+
+    <h2>1. Sobre este site</h2>
+    <p>Este é um portfolio pessoal de Paulo, com foco em apresentação de projetos, serviços de consultoria em automações, desenvolvimento web e inteligência artificial. O site é mantido por uma pessoa física, sem fins lucrativos diretos pela navegação.</p>
+
+    <h2>2. Uso permitido</h2>
+    <ul>
+      <li>Visualizar o conteúdo para avaliação de serviços e portfólio.</li>
+      <li>Entrar em contato via formulário, WhatsApp ou e-mail para contratação.</li>
+      <li>Compartilhar links públicos para divulgação do trabalho.</li>
+    </ul>
+    <p>É proibido:</p>
+    <ul>
+      <li>Realizar scraping automatizado em massa do conteúdo.</li>
+      <li>Tentar acessar áreas restritas (como o painel <code>/admin.html</code>) sem autorização.</li>
+      <li>Reproduzir textos, imagens ou código do site como se fossem de sua autoria.</li>
+      <li>Enviar conteúdo malicioso, difamatório ou ilegal pelos formulários de contato.</li>
+    </ul>
+
+    <h2>3. Propriedade intelectual</h2>
+    <p>Todo o conteúdo deste site (textos, imagens, layouts, código-fonte) é de minha autoria ou usado com licença apropriada. A reprodução total ou parcial sem autorização prévia é proibida, exceto para fins de citação com os devidos créditos.</p>
+    <p>Métricas, marcas de terceiros e eventuais capturas de tela de produtos de terceiros permanecem propriedade de seus respectivos donos.</p>
+
+    <h2>4. Isenção de responsabilidade</h2>
+    <p>Esforço-me para manter o site disponível, atualizado e livre de erros, mas não garanto operação ininterrupta. Posso modificar, suspender ou descontinuar partes do site a qualquer momento, sem aviso prévio.</p>
+    <p>Conteúdos gerados pelo assistente de IA (chatbot Groq) são respostas automáticas, podem conter imprecisões e não constituem aconselhamento profissional, jurídico ou técnico. Use como ponto de partida, não como verdade absoluta.</p>
+
+    <h2>5. Limitação de responsabilidade</h2>
+    <p>Na extensão máxima permitida por lei, não sou responsável por danos indiretos, incidentais ou consequenciais decorrentes do uso ou impossibilidade de uso deste site.</p>
+
+    <h2>6. Links externos</h2>
+    <p>Posso linkar para sites de terceiros (GitHub, LinkedIn, ferramentas, etc.). Não me responsabilizo pelo conteúdo ou práticas desses sites. Leia os termos deles ao sair deste domínio.</p>
+
+    <h2>7. Alterações destes termos</h2>
+    <p>Estes termos podem ser atualizados periodicamente. A data no topo indica a última revisão. O uso contínuo após mudanças significa concordância com a nova versão.</p>
+
+    <h2>8. Foro</h2>
+    <p>Fica eleito o foro da comarca de Rio Branco — AC (Brasil) para dirimir quaisquer questões, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+
+    <h2>9. Contato</h2>
+    <p>Dúvidas sobre estes termos? Fale comigo pelo <a href="index.html#agendar">formulário de contato</a> ou direto no <a href="politica.html">Política de Privacidade</a>.</p>
+
+    <p class="terminal-line">$ cat termos.md | wc -l<br>// fim do arquivo</p>
+  </main>
+
+  <!-- Footer (reuso do index) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo glitch" data-text="<Paulo />" style="color:var(--green)">&lt;Paulo /&gt;</a>
+          <p>Automações, dev web & IA</p>
+        </div>
+        <div class="footer-links">
+          <a href="termos.html" class="footer-social">[ Termos ]</a>
+          <a href="politica.html" class="footer-social">[ Privacidade ]</a>
+          <a href="cookies.html" class="footer-social">[ Cookies ]</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Paulo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

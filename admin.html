@@ -3,767 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAULO_OS v1.0.0 - ADMIN PANEL</title>
-  <!-- Google Fonts: Share Tech Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- FontAwesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Supabase JS Client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.39.8/dist/umd/supabase.js"></script>
+  <title>Admin | Paulo</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --bg-color: #030303;
-      --text-color: #00ff66;
-      --text-dim: #008833;
-      --accent-color: #ff0055;
-      --panel-border: 1px solid #00ff66;
-      --panel-border-dim: 1px solid #005522;
-      --panel-bg: rgba(0, 10, 3, 0.85);
-      --font-mono: 'Share Tech Mono', monospace;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font-mono);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* Matrix rain background */
-    #matrix-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-
-    /* Terminal Header */
-    header {
-      border-bottom: var(--panel-border);
-      background: rgba(0, 5, 2, 0.95);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-shadow: 0 0 8px var(--text-color);
-    }
-
-    .header-logo span {
-      animation: blink 1s infinite;
-    }
-
-    .header-info {
-      font-size: 0.9rem;
-      text-align: right;
-    }
-
-    .btn-logout {
-      background: transparent;
-      border: 1px solid var(--accent-color);
-      color: var(--accent-color);
-      font-family: var(--font-mono);
-      padding: 0.3rem 0.8rem;
-      cursor: pointer;
-      margin-left: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .btn-logout:hover {
-      background: var(--accent-color);
-      color: #fff;
-      box-shadow: 0 0 10px var(--accent-color);
-    }
-
-    /* Main Content Wrapper */
-    main {
-      flex: 1;
-      padding: 2rem;
-      max-width: 1400px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    /* Login Screen */
-    #login-screen {
-      max-width: 500px;
-      margin: 8rem auto;
-      border: var(--panel-border);
-      background: var(--panel-bg);
-      padding: 2rem;
-      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
-    }
-
-    .login-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      border-bottom: var(--panel-border-dim);
+    /* Admin-only styles (complementam style.css) */
+    .admin-shell { max-width: 1100px; margin: 0 auto; padding: 6rem 1.5rem 3rem; }
+    .admin-header {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--green-dim, #1f3);
       padding-bottom: 1rem;
     }
-
-    .form-group {
-      margin-bottom: 1.5rem;
+    .admin-header h1 { font-size: 1.25rem; color: var(--green, #00ff41); }
+    .admin-header .session-info { font-size: 0.85rem; color: #888; }
+    .admin-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .admin-tabs button {
+      background: transparent; color: var(--green, #00ff41);
+      border: 1px solid var(--green-dim, #1f3);
+      padding: 0.5rem 1rem; font-family: inherit; cursor: pointer;
     }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-      font-size: 0.9rem;
+    .admin-tabs button.active { background: var(--green, #00ff41); color: #000; }
+    .admin-tabs button:hover:not(.active) { border-color: var(--green, #00ff41); }
+    .login-card {
+      max-width: 420px; margin: 6rem auto; padding: 2rem;
+      border: 1px solid var(--green-dim, #1f3); background: #0a0a0a;
     }
-
-    .form-group input {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      border: 1px solid var(--text-dim);
-      color: var(--text-color);
-      font-family: var(--font-mono);
-      padding: 0.8rem;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.3s ease;
+    .login-card h2 { margin-bottom: 1.5rem; color: var(--green, #00ff41); }
+    .form-row { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-row label { font-size: 0.85rem; color: #888; }
+    .form-row input {
+      background: #000; color: var(--green, #00ff41);
+      border: 1px solid var(--green-dim, #1f3);
+      padding: 0.6rem; font-family: inherit; font-size: 0.95rem;
     }
-
-    .form-group input:focus {
-      border-color: var(--text-color);
-      box-shadow: 0 0 8px rgba(0, 255, 102, 0.3);
+    .form-row input:focus { outline: 1px solid var(--green, #00ff41); }
+    .form-error { color: #ff5555; font-size: 0.85rem; min-height: 1.2em; margin-bottom: 0.5rem; }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .admin-table th, .admin-table td {
+      border: 1px solid #1a3a1a; padding: 0.5rem 0.75rem; text-align: left;
     }
-
-    .btn-login {
-      width: 100%;
-      background: transparent;
-      border: var(--panel-border);
-      color: var(--text-color);
-      font-family: var(--font-mono);
-      padding: 0.8rem;
-      font-size: 1.1rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .btn-login:hover {
-      background: var(--text-color);
-      color: #000;
-      box-shadow: 0 0 15px var(--text-color);
-    }
-
-    .login-error {
-      color: var(--accent-color);
-      margin-top: 1rem;
-      text-align: center;
-      display: none;
-    }
-
-    /* Dashboard Layout */
-    #dashboard-screen {
-      display: none;
-    }
-
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .stat-card {
-      border: var(--panel-border-dim);
-      background: var(--panel-bg);
-      padding: 1.5rem;
-      border-left: 4px solid var(--text-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .stat-info h3 {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-info p {
-      font-size: 2.5rem;
-      font-weight: bold;
-      text-shadow: 0 0 5px var(--text-color);
-    }
-
-    .stat-icon {
-      font-size: 2.5rem;
-      color: var(--text-dim);
-    }
-
-    /* Dashboard Panels */
-    .panel {
-      border: var(--panel-border);
-      background: var(--panel-bg);
-      margin-bottom: 2.5rem;
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.05);
-    }
-
-    .panel-header {
-      background: rgba(0, 50, 20, 0.4);
-      border-bottom: var(--panel-border);
-      padding: 0.8rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .panel-title {
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .panel-body {
-      padding: 1.5rem;
-      overflow-x: auto;
-    }
-
-    /* Tables */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    th, td {
-      padding: 0.8rem 1rem;
-      border-bottom: 1px solid rgba(0, 255, 102, 0.15);
-      font-size: 0.95rem;
-    }
-
-    th {
-      text-transform: uppercase;
-      color: var(--text-dim);
-      font-weight: bold;
-    }
-
-    tr:hover {
-      background: rgba(0, 255, 102, 0.03);
-    }
-
-    /* Badges */
+    .admin-table th { background: #0a1a0a; color: var(--green, #00ff41); }
+    .admin-table tr:hover td { background: #0a1a0a; }
+    .admin-table .empty-row td { text-align: center; color: #888; padding: 2rem; }
     .badge {
-      display: inline-block;
-      padding: 0.2rem 0.5rem;
-      font-size: 0.8rem;
-      border-radius: 2px;
-      text-transform: uppercase;
+      display: inline-block; padding: 0.15rem 0.5rem; font-size: 0.75rem;
+      border: 1px solid currentColor;
     }
-
-    .badge-pending {
-      border: 1px solid #ffcc00;
-      color: #ffcc00;
+    .badge.pending { color: #ffaa00; }
+    .badge.confirmed { color: #00ff41; }
+    .badge.cancelled { color: #ff5555; }
+    .row-actions { display: flex; gap: 0.5rem; }
+    .row-actions button {
+      background: transparent; border: 1px solid #444; color: #ccc;
+      padding: 0.25rem 0.5rem; font-family: inherit; font-size: 0.75rem; cursor: pointer;
     }
-
-    .badge-completed {
-      border: 1px solid #00ff66;
-      color: #00ff66;
+    .row-actions button:hover { border-color: var(--green, #00ff41); color: var(--green, #00ff41); }
+    .row-actions button.danger:hover { border-color: #ff5555; color: #ff5555; }
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem; margin-bottom: 2rem;
     }
-
-    .badge-cancelled {
-      border: 1px solid var(--accent-color);
-      color: var(--accent-color);
+    .metric-card {
+      border: 1px solid var(--green-dim, #1f3); padding: 1.25rem;
+      background: #0a0a0a;
     }
-
-    /* Action Buttons */
-    .btn-action {
-      background: transparent;
-      border: 1px solid var(--text-dim);
-      color: var(--text-color);
-      font-family: var(--font-mono);
-      padding: 0.2rem 0.5rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      margin-right: 0.3rem;
-      transition: all 0.3s ease;
+    .metric-card .value {
+      font-size: 1.75rem; color: var(--green, #00ff41); margin-bottom: 0.25rem;
     }
-
-    .btn-action:hover {
-      border-color: var(--text-color);
-      box-shadow: 0 0 5px var(--text-color);
+    .metric-card .label { font-size: 0.8rem; color: #888; text-transform: uppercase; }
+    .logout-btn {
+      background: transparent; color: #ff5555; border: 1px solid #ff5555;
+      padding: 0.4rem 0.9rem; font-family: inherit; cursor: pointer;
     }
-
-    .btn-action-complete {
-      color: #00ff66;
-      border-color: #00aa44;
-    }
-
-    .btn-action-cancel {
-      color: var(--accent-color);
-      border-color: #880022;
-    }
-
-    /* Terminate Loading Spiners */
-    .loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 3rem;
-      font-size: 1.2rem;
-      color: var(--text-dim);
-    }
-
-    .loader i {
-      animation: spin 1s linear infinite;
-      margin-right: 0.5rem;
-    }
-
-    /* Animations */
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      .header-info {
-        text-align: center;
-      }
-    }
+    .logout-btn:hover { background: #ff5555; color: #000; }
+    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
+  <main class="admin-shell">
 
-  <!-- Matrix Rain Canvas -->
-  <canvas id="matrix-canvas"></canvas>
-
-  <!-- Terminal Header -->
-  <header>
-    <div class="header-logo">PAULO_OS_ADMIN<span>_</span></div>
-    <div class="header-info" id="header-user-info">
-      SYS_STATUS: OFFLINE | ACCESS_LEVEL: GUEST
-    </div>
-  </header>
-
-  <!-- Main Area -->
-  <main>
-    <!-- 1. LOGIN SCREEN -->
-    <div id="login-screen">
-      <div class="login-header">
-        <h2>[ SECURE TERMINAL LOGIN ]</h2>
-        <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 0.5rem;">INSIRA A CHAVE SERVICE_ROLE PARA CONECTAR</p>
-      </div>
-      <div class="form-group">
-        <label for="admin-key">SUPABASE SERVICE_ROLE KEY:</label>
-        <input type="password" id="admin-key" placeholder="Digite a chave service_role...">
-      </div>
-      <button class="btn-login" id="btn-login">AUTENTICAR_</button>
-      <div class="login-error" id="login-error">FALHA_NA_AUTENTICACAO_</div>
+    <!-- ============================================ -->
+    <!-- TELA DE LOGIN                                -->
+    <!-- ============================================ -->
+    <div id="login-screen" class="login-card">
+      <h2>./login --admin</h2>
+      <form id="login-form" autocomplete="on">
+        <div class="form-row">
+          <label for="login-email">email</label>
+          <input type="email" id="login-email" required autocomplete="username">
+        </div>
+        <div class="form-row">
+          <label for="login-password">senha</label>
+          <input type="password" id="login-password" required autocomplete="current-password">
+        </div>
+        <p id="login-error" class="form-error" role="alert" aria-live="polite"></p>
+        <button type="submit" class="btn btn-primary" style="width:100%">[ ENTRAR ]</button>
+      </form>
+      <p style="margin-top:1.5rem;font-size:0.75rem;color:#666;">
+        Acesso restrito. Tentativas são logadas.
+      </p>
     </div>
 
-    <!-- 2. DASHBOARD SCREEN -->
-    <div id="dashboard-screen">
-      <!-- Stats Summary -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-info">
-            <h3>Consultorias Agendadas</h3>
-            <p id="stat-bookings">0</p>
-          </div>
-          <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+    <!-- ============================================ -->
+    <!-- DASHBOARD                                    -->
+    <!-- ============================================ -->
+    <div id="dashboard" hidden>
+      <header class="admin-header">
+        <div>
+          <h1>paulo@admin:~$</h1>
+          <p class="session-info" id="session-info">--</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-info">
-            <h3>Leads Capturados</h3>
-            <p id="stat-leads">0</p>
-          </div>
-          <div class="stat-icon"><i class="fa-solid fa-address-book"></i></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-info">
-            <h3>Visitas (Analytics)</h3>
-            <p id="stat-views">0</p>
-          </div>
-          <div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div>
-        </div>
-      </div>
+        <button class="logout-btn" id="logout-btn">[ LOGOUT ]</button>
+      </header>
 
-      <!-- Bookings Panel -->
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fa-solid fa-clock"></i> AGENDAMENTOS SOLICITADOS</div>
-          <button class="btn-action" onclick="loadAllData()"><i class="fa-solid fa-rotate"></i> REFRESH</button>
-        </div>
-        <div class="panel-body">
-          <div id="bookings-loader" class="loader"><i class="fa-solid fa-circle-notch"></i> CARREGANDO_REGISTROS...</div>
-          <table id="bookings-table" style="display: none;">
-            <thead>
-              <tr>
-                <th>Data/Hora</th>
-                <th>Nome</th>
-                <th>Contato</th>
-                <th>Serviço</th>
-                <th>Mensagem</th>
-                <th>Status</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="bookings-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <nav class="admin-tabs" role="tablist">
+        <button data-tab="bookings"  class="active" role="tab">[ Agendamentos ]</button>
+        <button data-tab="leads"     role="tab">[ Leads ]</button>
+        <button data-tab="analytics" role="tab">[ Analytics ]</button>
+      </nav>
 
-      <!-- Leads Panel -->
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fa-solid fa-user-plus"></i> CONTATOS / LEADS</div>
-        </div>
-        <div class="panel-body">
-          <div id="leads-loader" class="loader"><i class="fa-solid fa-circle-notch"></i> CARREGANDO_REGISTROS...</div>
-          <table id="leads-table" style="display: none;">
-            <thead>
-              <tr>
-                <th>Data</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Mensagem</th>
-              </tr>
-            </thead>
-            <tbody id="leads-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Analytics Panel -->
-      <div class="panel">
-        <div class="panel-header">
-          <div class="panel-title"><i class="fa-solid fa-eye"></i> LOGS DE VISITAS / ANALYTICS</div>
-        </div>
-        <div class="panel-body">
-          <div id="analytics-loader" class="loader"><i class="fa-solid fa-circle-notch"></i> CARREGANDO_REGISTROS...</div>
-          <table id="analytics-table" style="display: none;">
-            <thead>
-              <tr>
-                <th>Data/Hora</th>
-                <th>Evento</th>
-                <th>Origem (Referrer)</th>
-                <th>User Agent</th>
-              </tr>
-            </thead>
-            <tbody id="analytics-tbody">
-              <!-- Dynamically populated -->
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <section id="tab-bookings" role="tabpanel"></section>
+      <section id="tab-leads"    role="tabpanel" hidden></section>
+      <section id="tab-analytics" role="tabpanel" hidden></section>
     </div>
+
   </main>
 
-  <script>
-    // ===== MATRIX EFFECT =====
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
+  <script type="module">
+    // =====================================================
+    // CONFIGURAÇÃO (público por design — anon key é rotacionável,
+    // RLS no Supabase protege os dados)
+    // =====================================================
+    const SUPABASE_URL = 'https://egioyhrdbmhvmblgwvpi.supabase.co'
+    const SUPABASE_ANON_KEY = 'sb_publishable_23t3IDTe7sOuP4wee1q0IA_1tvjDxD1'
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    const { createClient } = await import(
+      'https://esm.sh/@supabase/supabase-js@2.39.8'
+    )
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: { persistSession: true, autoRefreshToken: true }
+    })
+
+    // =====================================================
+    // AUTH STATE
+    // =====================================================
+    const $login   = document.getElementById('login-screen')
+    const $dash    = document.getElementById('dashboard')
+    const $err     = document.getElementById('login-error')
+    const $info    = document.getElementById('session-info')
+
+    function showLogin() {
+      $dash.hidden = true
+      $login.hidden = false
     }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    function showDashboard(session) {
+      $login.hidden = true
+      $dash.hidden = false
+      $info.textContent = `logado: ${session.user.email} • expira ${new Date(session.expires_at * 1000).toLocaleTimeString('pt-BR')}`
+    }
 
-    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_@#$&*';
-    const charArr = chars.split('');
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
+    // Verifica sessão existente ao carregar
+    const { data: { session: initialSession } } = await supabase.auth.getSession()
+    if (initialSession) showDashboard(initialSession)
+    else showLogin()
 
-    function drawMatrix() {
-      ctx.fillStyle = 'rgba(3, 3, 3, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Reage a mudanças (login, logout, refresh)
+    supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        showDashboard(session)
+        loadTab(currentTab)
+      } else {
+        showLogin()
+      }
+    })
 
-      ctx.fillStyle = '#00ff66';
-      ctx.font = fontSize + 'px monospace';
+    // Login form
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      $err.textContent = ''
+      const email    = document.getElementById('login-email').value.trim()
+      const password = document.getElementById('login-password').value
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) $err.textContent = error.message
+    })
 
-      for (let i = 0; i < drops.length; i++) {
-        const text = charArr[Math.floor(Math.random() * charArr.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+    // Logout
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await supabase.auth.signOut()
+    })
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
+    // =====================================================
+    // TABS
+    // =====================================================
+    let currentTab = 'bookings'
+
+    document.querySelectorAll('.admin-tabs button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.admin-tabs button').forEach(b => b.classList.remove('active'))
+        btn.classList.add('active')
+        currentTab = btn.dataset.tab
+        document.querySelectorAll('[role="tabpanel"]').forEach(s => s.hidden = true)
+        document.getElementById(`tab-${currentTab}`).hidden = false
+        loadTab(currentTab)
+      })
+    })
+
+    // =====================================================
+    // RENDERIZAÇÃO (XSS-safe: usa textContent/createElement)
+    // =====================================================
+    function escapeHtml(s) {
+      if (s == null) return ''
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;')
+    }
+
+    function el(tag, attrs = {}, ...children) {
+      const node = document.createElement(tag)
+      for (const [k, v] of Object.entries(attrs)) {
+        if (k === 'class') node.className = v
+        else if (k === 'onClick') node.addEventListener('click', v)
+        else if (k === 'data') node.dataset[v[0]] = v[1]
+        else node.setAttribute(k, v)
+      }
+      for (const c of children) {
+        if (c == null) continue
+        node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c)
+      }
+      return node
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '—'
+      try { return new Date(iso).toLocaleString('pt-BR') }
+      catch { return iso }
+    }
+
+    // =====================================================
+    // TABELA GENÉRICA
+    // =====================================================
+    function renderTable(container, columns, rows, actions = []) {
+      container.innerHTML = ''
+      const table = el('table', { class: 'admin-table' })
+      const thead = el('thead')
+      const trh = el('tr')
+      for (const col of columns) trh.appendChild(el('th', {}, col.label))
+      if (actions.length) trh.appendChild(el('th', {}, 'ações'))
+      thead.appendChild(trh)
+      table.appendChild(thead)
+
+      const tbody = el('tbody')
+      if (!rows || rows.length === 0) {
+        const tr = el('tr', { class: 'empty-row' })
+        tr.appendChild(el('td', { colspan: String(columns.length + (actions.length ? 1 : 0)) }, 'Nenhum registro.'))
+        tbody.appendChild(tr)
+      } else {
+        for (const row of rows) {
+          const tr = el('tr')
+          for (const col of columns) {
+            let val = typeof col.render === 'function' ? col.render(row) : row[col.key]
+            if (val instanceof Node) tr.appendChild(el('td', {}, val))
+            else tr.appendChild(el('td', {}, val == null ? '—' : String(val)))
+          }
+          if (actions.length) {
+            const td = el('td')
+            const wrap = el('div', { class: 'row-actions' })
+            for (const a of actions) {
+              const btn = el('button', {
+                class: a.danger ? 'danger' : '',
+                onClick: () => a.onClick(row)
+              }, a.label)
+              wrap.appendChild(btn)
+            }
+            td.appendChild(wrap)
+            tr.appendChild(td)
+          }
+          tbody.appendChild(tr)
         }
-        drops[i]++;
       }
-    }
-    setInterval(drawMatrix, 35);
-
-    // ===== SUPABASE CLIENT & ADMIN CONFIG =====
-    const SUPABASE_URL = 'https://egioyhrdbmhvmblgwvpi.supabase.co';
-    let supabase = null;
-
-    // Check if key is already in localStorage
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedKey = localStorage.getItem('supabase_service_role_key');
-      if (savedKey) {
-        document.getElementById('admin-key').value = savedKey;
-        authenticate(savedKey);
-      }
-    });
-
-    // Login Action
-    document.getElementById('btn-login').addEventListener('click', () => {
-      const key = document.getElementById('admin-key').value.trim();
-      if (!key) {
-        showError('CHAVE VAZIA!');
-        return;
-      }
-      authenticate(key);
-    });
-
-    function showError(msg) {
-      const err = document.getElementById('login-error');
-      err.textContent = msg;
-      err.style.display = 'block';
+      table.appendChild(tbody)
+      container.appendChild(table)
     }
 
-    async function authenticate(serviceRoleKey) {
+    // =====================================================
+    // LOADERS
+    // =====================================================
+    async function loadTab(tab) {
+      const $section = document.getElementById(`tab-${tab}`)
+      $section.innerHTML = '<p style="color:#888">carregando...</p>'
       try {
-        // Initialize Supabase Client with service_role key to bypass RLS
-        supabase = supabase.createClient(SUPABASE_URL, serviceRoleKey, {
-          auth: { persistSession: false }
-        });
-
-        // Test connection by executing a simple query
-        const { data, error } = await supabase.from('bookings').select('id').limit(1);
-
-        if (error) {
-          throw error;
-        }
-
-        // Auth success!
-        localStorage.setItem('supabase_service_role_key', serviceRoleKey);
-
-        // Update UI
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('dashboard-screen').style.display = 'block';
-        document.getElementById('header-user-info').innerHTML = `
-          SYS_STATUS: <span style="color: #00ff66; text-shadow: 0 0 5px #00ff66;">ONLINE</span> |
-          ACCESS_LEVEL: <span style="color: #00ff66;">ROOT_ADMIN</span>
-          <button class="btn-logout" onclick="logout()">LOGOUT</button>
-        `;
-
-        loadAllData();
-
+        if (tab === 'bookings')  await loadBookings($section)
+        if (tab === 'leads')     await loadLeads($section)
+        if (tab === 'analytics') await loadAnalytics($section)
       } catch (err) {
-        console.error('Auth error:', err);
-        showError('CHAVE INCORRETA OU ERRO DE CONEXAO!');
-        localStorage.removeItem('supabase_service_role_key');
+        $section.innerHTML = ''
+        $section.appendChild(el('p', { style: 'color:#ff5555' }, `Erro: ${escapeHtml(err.message || String(err))}`))
       }
     }
 
-    function logout() {
-      localStorage.removeItem('supabase_service_role_key');
-      location.reload();
+    async function loadBookings($section) {
+      const { data, error } = await supabase
+        .from('bookings')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(100)
+      if (error) throw error
+      renderTable($section,
+        [
+          { key: 'nome',      label: 'nome' },
+          { key: 'email',     label: 'email' },
+          { key: 'empresa',   label: 'empresa' },
+          { key: 'mensagem',  label: 'mensagem' },
+          { key: 'created_at', label: 'criado em', render: r => formatDate(r.created_at) }
+        ],
+        data,
+        [
+          { label: 'apagar', danger: true, onClick: r => deleteRow('bookings', r.id, () => loadTab('bookings')) }
+        ]
+      )
     }
 
-    // ===== DATA FETCHING =====
-    async function loadAllData() {
-      if (!supabase) return;
+    async function loadLeads($section) {
+      const { data, error } = await supabase
+        .from('leads')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(100)
+      if (error) throw error
+      renderTable($section,
+        [
+          { key: 'nome',      label: 'nome' },
+          { key: 'email',     label: 'email' },
+          { key: 'telefone',  label: 'telefone' },
+          { key: 'origem',    label: 'origem' },
+          { key: 'created_at', label: 'criado em', render: r => formatDate(r.created_at) }
+        ],
+        data,
+        [
+          { label: 'apagar', danger: true, onClick: r => deleteRow('leads', r.id, () => loadTab('leads')) }
+        ]
+      )
+    }
 
-      // Show loaders
-      document.getElementById('bookings-loader').style.display = 'flex';
-      document.getElementById('bookings-table').style.display = 'none';
-      document.getElementById('leads-loader').style.display = 'flex';
-      document.getElementById('leads-table').style.display = 'none';
-      document.getElementById('analytics-loader').style.display = 'flex';
-      document.getElementById('analytics-table').style.display = 'none';
+    async function loadAnalytics($section) {
+      const { data, error } = await supabase
+        .from('analytics')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(500)
+      if (error) throw error
 
-      try {
-        // Fetch bookings
-        const { data: bookings, error: bErr } = await supabase
-          .from('bookings')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (bErr) throw bErr;
-
-        // Fetch leads
-        const { data: leads, error: lErr } = await supabase
-          .from('leads')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (lErr) throw lErr;
-
-        // Fetch analytics
-        const { data: analytics, error: aErr } = await supabase
-          .from('analytics')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(100);
-
-        if (aErr) throw aErr;
-
-        // Populate Stats
-        document.getElementById('stat-bookings').textContent = bookings.length;
-        document.getElementById('stat-leads').textContent = leads.length;
-        document.getElementById('stat-views').textContent = analytics.length;
-
-        // Populate Tables
-        populateBookings(bookings);
-        populateLeads(leads);
-        populateAnalytics(analytics);
-
-      } catch (err) {
-        console.error('Error loading data:', err);
-        alert('Erro ao carregar dados do Supabase!');
+      // Métricas agregadas
+      const total = data?.length || 0
+      const byEvent = {}
+      const byDay = {}
+      for (const ev of (data || [])) {
+        byEvent[ev.event] = (byEvent[ev.event] || 0) + 1
+        const day = (ev.created_at || '').slice(0, 10)
+        if (day) byDay[day] = (byDay[day] || 0) + 1
       }
+      const todayCount = byDay[new Date().toISOString().slice(0, 10)] || 0
+
+      $section.innerHTML = ''
+      const grid = el('div', { class: 'metrics-grid' })
+      grid.appendChild(metricCard(total,    'eventos totais'))
+      grid.appendChild(metricCard(todayCount, 'eventos hoje'))
+      grid.appendChild(metricCard(Object.keys(byEvent).length, 'tipos de evento'))
+      $section.appendChild(grid)
+
+      const top = Object.entries(byEvent).sort((a, b) => b[1] - a[1])
+      const evTable = el('div')
+      renderTable(evTable,
+        [
+          { label: 'evento', render: r => r.event },
+          { label: 'count',  render: r => r.count }
+        ],
+        top.map(([event, count]) => ({ event, count })),
+        []
+      )
+      $section.appendChild(el('h3', { style: 'color:var(--green);margin:1.5rem 0 0.5rem' }, 'Eventos por tipo'))
+      $section.appendChild(evTable)
     }
 
-    function populateBookings(bookings) {
-      const tbody = document.getElementById('bookings-tbody');
-      tbody.innerHTML = '';
-
-      if (bookings.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align: center;">Nenhum agendamento encontrado.</td></tr>`;
-      } else {
-        bookings.forEach(b => {
-          const dateFormatted = new Date(b.data).toLocaleDateString('pt-BR');
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${dateFormatted} às ${b.horario}</td>
-            <td><strong>${b.nome}</strong></td>
-            <td>
-              <i class="fa-solid fa-envelope"></i> ${b.email}<br>
-              <i class="fa-solid fa-phone"></i> ${b.telefone || 'N/A'}
-            </td>
-            <td><code style="color: #ff0055">${b.servico}</code></td>
-            <td style="font-size: 0.85rem; max-width: 250px; white-space: pre-wrap;">${b.mensagem || '-'}</td>
-            <td><span class="badge badge-${b.status || 'pending'}">${b.status || 'pending'}</span></td>
-            <td>
-              ${b.status !== 'completed' ? `
-                <button class="btn-action btn-action-complete" onclick="updateBookingStatus(${b.id}, 'completed')">
-                  <i class="fa-solid fa-check"></i>
-                </button>
-              ` : ''}
-              ${b.status !== 'cancelled' ? `
-                <button class="btn-action btn-action-cancel" onclick="updateBookingStatus(${b.id}, 'cancelled')">
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-              ` : ''}
-            </td>
-          `;
-          tbody.appendChild(row);
-        });
-      }
-
-      document.getElementById('bookings-loader').style.display = 'none';
-      document.getElementById('bookings-table').style.display = 'table';
+    function metricCard(value, label) {
+      return el('div', { class: 'metric-card' },
+        el('div', { class: 'value' }, String(value)),
+        el('div', { class: 'label' }, label)
+      )
     }
 
-    function populateLeads(leads) {
-      const tbody = document.getElementById('leads-tbody');
-      tbody.innerHTML = '';
-
-      if (leads.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center;">Nenhum lead encontrado.</td></tr>`;
-      } else {
-        leads.forEach(l => {
-          const created = new Date(l.created_at).toLocaleString('pt-BR');
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${created}</td>
-            <td><strong>${l.nome}</strong></td>
-            <td>${l.email}</td>
-            <td>${l.telefone || '-'}</td>
-            <td style="font-size: 0.85rem; max-width: 300px; white-space: pre-wrap;">${l.mensagem || '-'}</td>
-          `;
-          tbody.appendChild(row);
-        });
-      }
-
-      document.getElementById('leads-loader').style.display = 'none';
-      document.getElementById('leads-table').style.display = 'table';
+    async function deleteRow(table, id, reload) {
+      if (!confirm(`Apagar registro ${id} de ${table}?`)) return
+      const { error } = await supabase.from(table).delete().eq('id', id)
+      if (error) { alert('Erro: ' + error.message); return }
+      reload()
     }
 
-    function populateAnalytics(analytics) {
-      const tbody = document.getElementById('analytics-tbody');
-      tbody.innerHTML = '';
-
-      if (analytics.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align: center;">Nenhum registro de analytics encontrado.</td></tr>`;
-      } else {
-        analytics.forEach(a => {
-          const created = new Date(a.created_at).toLocaleString('pt-BR');
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${created}</td>
-            <td><code style="color: #ff0055">${a.event}</code></td>
-            <td>${a.referrer || 'Direto'}</td>
-            <td style="font-size: 0.8rem; color: #888; max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${a.user_agent}">
-              ${a.user_agent}
-            </td>
-          `;
-          tbody.appendChild(row);
-        });
-      }
-
-      document.getElementById('analytics-loader').style.display = 'none';
-      document.getElementById('analytics-table').style.display = 'table';
-    }
-
-    // Update Status Action
-    async function updateBookingStatus(id, status) {
-      if (!confirm(`Confirmar mudança de status para ${status.toUpperCase()}?`)) return;
-
-      try {
-        const { error } = await supabase
-          .from('bookings')
-          .update({ status: status })
-          .eq('id', id);
-
-        if (error) throw error;
-
-        loadAllData();
-      } catch (err) {
-        console.error('Error updating status:', err);
-        alert('Erro ao atualizar status.');
-      }
-    }
+    // =====================================================
+    // INICIAL
+    // =====================================================
+    if (initialSession) loadTab(currentTab)
   </script>
 </body>
 </html>

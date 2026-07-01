@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Cookies | Paulo - Automações, Dev Web & IA</title>
+  <meta name="description" content="Política de cookies do site de Paulo: que cookies usamos, terceiros, como aceitar ou recusar.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    .legal-page { max-width: 820px; margin: 0 auto; padding: 120px 24px 60px; }
+    .legal-page h1 { color: var(--green); margin-bottom: 0.5rem; font-size: 1.8rem; }
+    .legal-page .updated { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 2.5rem; }
+    .legal-page h2 { color: var(--green); margin-top: 2.5rem; margin-bottom: 0.75rem; font-size: 1.15rem; border-left: 2px solid var(--green); padding-left: 0.75rem; }
+    .legal-page p, .legal-page li { color: #c8c8c8; line-height: 1.75; margin-bottom: 0.85rem; font-size: 0.95rem; }
+    .legal-page ul { padding-left: 1.5rem; list-style: '> '; }
+    .legal-page ul li::marker { color: var(--green); }
+    .legal-page a { color: var(--green); border-bottom: 1px dashed var(--green); }
+    .legal-page a:hover { background: rgba(0, 255, 65, 0.08); }
+    .legal-page code { background: rgba(0, 255, 65, 0.1); padding: 0.1rem 0.4rem; color: var(--green); font-size: 0.85em; }
+    .legal-page table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    .legal-page th, .legal-page td { border: 1px solid #1a3a1a; padding: 0.5rem 0.75rem; text-align: left; }
+    .legal-page th { background: #0a1a0a; color: var(--green); }
+    .legal-page .terminal-line { color: var(--text-dim); font-size: 0.8rem; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <canvas id="matrix-rain"></canvas>
+  <div class="scanlines"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo glitch" data-text="<Paulo />">&lt;Paulo /&gt;</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html#sobre" class="nav-link">./sobre</a></li>
+        <li><a href="index.html#servicos" class="nav-link">./servicos</a></li>
+        <li><a href="index.html#projetos" class="nav-link">./projetos</a></li>
+        <li><a href="index.html#chat-ia" class="nav-link">./ia</a></li>
+        <li><a href="index.html#agendar" class="nav-link nav-cta">&gt; agendar_</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="legal-page">
+    <h1>./politica-de-cookies --read</h1>
+    <p class="updated">Última atualização: 01 de julho de 2026</p>
+
+    <p>Cookies são pequenos arquivos que um site salva no seu navegador para lembrar de coisas entre páginas ou visitas. Alguns são essenciais (técnicos); outros dependem do seu consentimento. Abaixo, detalhe do que uso e como controlar.</p>
+
+    <h2>1. Cookies que usamos</h2>
+
+    <table>
+      <thead>
+        <tr><th>Tipo</th><th>Finalidade</th><th>Origem</th><th>Consentimento?</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Preferência de consentimento</td>
+          <td>Guardar sua escolha (aceitar/recusar) no banner</td>
+          <td>este site (localStorage <code>paulo_cookie_consent</code>)</td>
+          <td>Não — técnico</td>
+        </tr>
+        <tr>
+          <td>Sessão de admin (se aplicável)</td>
+          <td>Manter você logado no painel <code>/admin.html</code></td>
+          <td>Supabase Auth</td>
+          <td>Não — técnico</td>
+        </tr>
+        <tr>
+          <td>Eventos analíticos (page view)</td>
+          <td>Contar visitas anônimas e páginas mais vistas</td>
+          <td>Edge Function <code>analytics</code> no Supabase</td>
+          <td><strong>Sim — só após ACEITAR</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. Cookies de terceiros</h2>
+    <p>Hoje, <strong>não utilizo cookies de redes de anúncios</strong> (Google Ads, Meta Pixel, etc.). Os únicos terceiros com acesso a algum dado são:</p>
+    <ul>
+      <li><strong>Supabase</strong> — backend do site e banco de dados.</li>
+      <li><strong>Groq</strong> — processa mensagens do chat IA, sem cookies no seu navegador.</li>
+      <li><strong>Vercel</strong> — hospedagem e CDN (pode definir cookies próprios de balanceamento; sem relação com este site).</li>
+    </ul>
+    <p>Se eu vier a integrar Google Analytics, Plausible, Umami ou similar, atualizo esta página e reabro o pedido de consentimento.</p>
+
+    <h2>3. Por que peço consentimento</h2>
+    <p>A LGPD (Brasil) e o GDPR (União Europeia) exigem consentimento livre e informado para cookies que tratam dados pessoais para finalidades não-estritamente necessárias. Por isso, a contagem de page view só roda depois que você clica <code>[ ACEITAR ]</code> no banner.</p>
+
+    <h2>4. Como aceitar ou recusar</h2>
+    <ul>
+      <li>No banner que aparece no seu primeiro acesso ao site, escolha <code>[ ACEITAR ]</code> ou <code>[ RECUSAR ]</code>.</li>
+      <li>Se recusar, eu paro de registrar page views para você. O site continua funcionando normalmente.</li>
+      <li>A sua escolha fica salva no <code>localStorage</code> do navegador. Para mudar, limpe o armazenamento do site (nas configurações do navegador) e recarregue — o banner reaparece.</li>
+    </ul>
+
+    <h2>5. Como desativar cookies no navegador</h2>
+    <p>Você pode bloquear ou apagar cookies nas configurações do seu navegador, independente deste site. Como exemplo:</p>
+    <ul>
+      <li>Chrome: <em>Configurações &gt; Privacidade e segurança &gt; Cookies</em></li>
+      <li>Firefox: <em>Configurações &gt; Privacidade e segurança</em></li>
+      <li>Safari: <em>Ajustes &gt; Privacidade</em></li>
+      <li>Edge: <em>Configurações &gt; Cookies e permissões de site</em></li>
+    </ul>
+    <p>Atenção: bloquear todos os cookies pode quebrar o login no painel admin e funcionalidades básicas.</p>
+
+    <h2>6. Retenção</h2>
+    <p>O cookie de consentimento (<code>paulo_cookie_consent</code>) persiste até você limpar os dados do site. Não há prazo de expiração automático — assim, o banner não reaparece a cada visita.</p>
+
+    <h2>7. Mais informações</h2>
+    <p>Para entender como trato seus dados pessoais além de cookies, leia a <a href="politica.html">Política de Privacidade</a>. Para regras de uso do site, veja os <a href="termos.html">Termos de Uso</a>.</p>
+
+    <h2>8. Contato</h2>
+    <p>Dúvidas sobre cookies? Use o <a href="index.html#agendar">formulário de contato</a> ou indique no assunto "LGPD — cookies".</p>
+
+    <p class="terminal-line">$ cat cookies.md | wc -l<br>// fim do arquivo</p>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo glitch" data-text="<Paulo />" style="color:var(--green)">&lt;Paulo /&gt;</a>
+          <p>Automações, dev web & IA</p>
+        </div>
+        <div class="footer-links">
+          <a href="termos.html" class="footer-social">[ Termos ]</a>
+          <a href="politica.html" class="footer-social">[ Privacidade ]</a>
+          <a href="cookies.html" class="footer-social">[ Cookies ]</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Paulo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

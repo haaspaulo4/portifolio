@@ -162,7 +162,14 @@ function addChatMessage(text, type) {
     const msg = document.createElement('div');
     msg.className = `chat-msg ${type}`;
     const label = type === 'user' ? '[VOCÊ]' : '[IA]';
-    msg.innerHTML = `<span class="msg-label">${label}</span><span class="msg-text">${text}</span>`;
+    const labelEl = document.createElement('span');
+    labelEl.className = 'msg-label';
+    labelEl.textContent = label;
+    const textEl = document.createElement('span');
+    textEl.className = 'msg-text';
+    textEl.textContent = text;
+    msg.appendChild(labelEl);
+    msg.appendChild(textEl);
     chatMessages.appendChild(msg);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return msg;
