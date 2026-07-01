@@ -1,15 +1,19 @@
 // =====================================================
 // Cookie Banner — LGPD
-// Exibe banner na primeira visita, salva consentimento
-// no localStorage. NÃO dispara analytics por conta própria;
-// isso é responsabilidade do `trackPageView` já existente em
-// script.js (mas pode ser desativado pelo usuário via banner).
+// - Mostra banner na primeira visita
+// - Salva consentimento no localStorage
+// - BLOQUEIA analytics quando consent não for "accepted"
+//   (intercepta window.fetch para /functions/v1/analytics
+//    quando consent está rejected/inexistente)
 // =====================================================
 ;(function () {
   'use strict';
 
   const CONSENT_KEY = 'paulo_cookie_consent';
   const STYLES_ID = 'cookie-banner-styles';
+  // Caminho da Edge Function de analytics. Bloqueamos requisições para cá
+  // quando o usuário recusou cookies (ou ainda não decidiu).
+  const ANALYTICS_PATH = '/functions/v1/analytics';
 
   if (document.getElementById('cookie-banner')) return;
 
@@ -60,14 +64,44 @@
     document.head.appendChild(css);
   }
 
-  // Se já decidiu antes, não mostra o banner.
-  try {
-    const prior = localStorage.getItem(CONSENT_KEY);
-    if (prior === 'accepted' || prior === 'rejected') return;
-  } catch (e) {
-    // localStorage indisponível (modo privado etc) — segue sem banner
-    return;
+  // Estado de consentimento
+  function getConsent() {
+    try { return localStorage.getItem(CONSENT_KEY); }
+    catch (e) { return null; }
   }
+  function setConsent(value) {
+    try { localStorage.setItem(CONSENT_KEY, value); }
+    catch (e) { /* ignore */ }
+  }
+
+  // =====================================================
+  // INTERCEPTAÇÃO DE window.fetch
+  // Bloqueia requisições de analytics enquanto consent não for "accepted".
+  // Isso resolve o bug de o `trackPageView` em script.js disparar antes
+  // do usuário decidir, ou após ele recusar.
+  // =====================================================
+  if (!window.__cookieBannerFetchPatched) {
+    window.__cookieBannerFetchPatched = true;
+    const originalFetch = window.fetch.bind(window);
+    window.fetch = function (input, init) {
+      let url = '';
+      try {
+        url = typeof input === 'string' ? input : (input && input.url) || '';
+      } catch (e) { /* ignore */ }
+      const isAnalytics = url.indexOf(ANALYTICS_PATH) !== -1;
+      const consent = getConsent();
+      if (isAnalytics && consent !== 'accepted') {
+        // Bloqueia silenciosamente. Retorna uma Promise resolvida com uma
+        // Response fake para que o `.then(...)` do chamador não quebre.
+        return Promise.resolve(new Response(null, { status: 204, statusText: 'No Content (consent required)' }));
+      }
+      return originalFetch(input, init);
+    };
+  }
+
+  // Se já decidiu antes, não mostra o banner (mas o fetch já está patchado).
+  const prior = getConsent();
+  if (prior === 'accepted' || prior === 'rejected') return;
 
   const banner = document.createElement('div');
   banner.id = 'cookie-banner';
@@ -96,11 +130,15 @@
     const t = ev.target.closest('button[data-action]');
     if (!t) return;
     const action = t.dataset.action;
-    try {
-      localStorage.setItem(CONSENT_KEY, action === 'accept' ? 'accepted' : 'rejected');
-    } catch (e) { /* ignore */ }
+    setConsent(action === 'accept' ? 'accepted' : 'rejected');
     banner.remove();
-    // Expõe decisão global para outros scripts (não aciona analytics aqui).
+    // Expõe decisão global para outros scripts.
     window.dispatchEvent(new CustomEvent('cookieConsent', { detail: { value: action === 'accept' ? 'accepted' : 'rejected' } }));
+    // Se aceitou, recarrega para que o trackPageView pendente rode de novo.
+    // (Não recarregamos no reject — o fetch já está bloqueado para próximos eventos.)
+    if (action === 'accept') {
+      // Pequeno delay para o usuário ver o banner sumir
+      setTimeout(function () { location.reload(); }, 200);
+    }
   });
 })();
